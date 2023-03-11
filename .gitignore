@@ -1,0 +1,10 @@
+tmp/**
+!tmp/.keep
+
+log/**
+!log/.keep
+
+db/*.sqlite3
+
+vendor/**
+!vendor/.keep
