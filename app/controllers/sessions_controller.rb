@@ -10,7 +10,10 @@ class SessionsController < ApplicationController
       redirect_to user
     else
       flash.now[:danger] = 'Invalid email/password combination'
-      render 'new', status: :unprecessable_entity
+      render 'new', status: :unprocessable_entity
     end
+  end
+
+  def destroy
   end
 end
