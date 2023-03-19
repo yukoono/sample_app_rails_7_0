@@ -3,17 +3,25 @@ version: 2.1
 workflows:
   my-workflow:
     jobs:
-      - hello-job:
+      - test:
           context:
             - docker-env
 
 jobs:
-  hello-job:
+  test:
     docker:
-      - image: cimg/node:19.7.0
+      - image: cimg/ruby:3.1.3
         auth:
           username: yukoono
           password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
-      - run: echo "hello world"
+      - run:
+          name: "bundle install"
+          command: "bundle install"
+      - run:
+          name: "database migrate"
+          command: "bundle exec rails db:migrate"
+      - run:
+          name: "rails test"
+          command: "bundle exec rails test"
