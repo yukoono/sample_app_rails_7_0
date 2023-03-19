@@ -1,0 +1,19 @@
+version: 2.1
+
+workflows:
+  my-workflow:
+    jobs:
+      - hello-job:
+          context:
+            - docker-env
+
+jobs:
+  hello-job:
+    docker:
+      - image: cimg/node:19.7.0
+        auth:
+          username: yukoono
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - run: echo "hello world"
