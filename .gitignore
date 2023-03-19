@@ -7,4 +7,5 @@ log/**
 db/*.sqlite3
 
 vendor/**
+!vendor/javascript/.keep
 !vendor/.keep
